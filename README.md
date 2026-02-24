@@ -59,16 +59,6 @@
 
 ---
 
-## What even is this?
-
-So you found a repo where a neural network stares at skin images until it figures out whether that mole is "just a mole" or "please make a dermatologist appointment immediately." Built with TensorFlow, trained on the ISIC archive, and armed with a VGG-style CNN that has *opinions* about your dermoscopic images.
-
-No frontend. No REST API. Just pure, unapologetic `python main.py` energy.
-
-> **Not a medical device.** Seriously. Do not replace your doctor with this. This is a research/learning project. Your actual healthcare decisions should involve actual healthcare professionals.
-
----
-
 <div align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -82,37 +72,38 @@ No frontend. No REST API. Just pure, unapologetic `python main.py` energy.
 
 ---
 
-## Table of Contents
+## What even is this?
 
-1. [Live Demo](#live-demo)
-2. [System Overview](#system-overview)
-3. [Features](#features)
-4. [Capability Visualization](#capability-visualization)
-5. [Architecture Diagram](#architecture-diagram)
-6. [Data Flow](#data-flow)
-7. [Installation](#installation)
-8. [Usage](#usage)
-9. [Project Structure](#project-structure)
-10. [Performance Stats](#performance-stats)
-11. [Privacy](#privacy)
-12. [Roadmap](#roadmap)
-13. [License](#license)
+So you found a repo where a neural network stares at skin images until it figures out whether that mole is "just a mole" or "please make a dermatologist appointment immediately." Built with TensorFlow, trained on the ISIC archive, and armed with a VGG-style CNN that has *opinions* about your dermoscopic images.
+
+No frontend. No REST API. Just pure, unapologetic `python main.py` energy.
+
+> **Not a medical device.** Seriously. Do not replace your doctor with this. This is a research/learning project. Your actual healthcare decisions should involve actual healthcare professionals.
 
 ---
 
-## Live Demo
+## Table of Contents
 
-> **Place demo GIF here:** `assets/demo.gif`
+1. [System Overview](#system-overview)
+2. [Features](#features)
+3. [Capability Visualization](#capability-visualization)
+4. [Architecture Diagram](#architecture-diagram)
+5. [Data Flow](#data-flow)
+6. [Installation](#installation)
+7. [Usage](#usage)
+8. [Project Structure](#project-structure)
+9. [Performance Stats](#performance-stats)
+10. [Privacy](#privacy)
+11. [Roadmap](#roadmap)
+12. [License](#license)
 
-![Demo](assets/demo.gif)
+---
 
-*What the GIF should show:*
-- Running `python main.py` in a terminal
-- Epoch-by-epoch training output scrolling (the satisfying kind)
-- EarlyStopping kicking in and saving the best checkpoint
-- Final classification report being printed class by class
+<div align="center">
 
-Keep it short — 15 to 30 seconds is enough. No one needs to watch 50 epochs in real time.
+![Humor](https://media.giphy.com/media/scT1OEBfgQBFm/giphy.gif)
+
+</div>
 
 ---
 
