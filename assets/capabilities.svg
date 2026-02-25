@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="500" viewBox="0 0 820 500">
+  <!-- Dark background -->
+  <rect width="820" height="500" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="410" y="34" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="2">CAPABILITIES</text>
+  <line x1="60" y1="46" x2="760" y2="46" stroke="#4E5568" stroke-width="1"/>
+
+  <!-- Legend -->
+  <rect x="580" y="54" width="14" height="14" rx="2" fill="#E05252"/>
+  <text x="598" y="65" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Implemented</text>
+  <rect x="672" y="54" width="14" height="14" rx="2" fill="#F5A623"/>
+  <text x="690" y="65" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Planned</text>
+
+  <!-- ── Row 1 ─────────────────────────────────────────────────────────────── -->
+
+  <!-- Card 1: 9-class CNN -->
+  <rect x="30" y="78" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="30" y="78" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="48" y="102" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">9-Class CNN Classifier</text>
+  <text x="48" y="120" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">VGG-style architecture: 3 conv blocks</text>
+  <text x="48" y="136" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">with BN + MaxPool + Dropout, then</text>
+  <text x="48" y="152" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Dense(256) → softmax over 9 classes</text>
+  <circle cx="248" cy="90" r="6" fill="#E05252"/>
+  <text x="256" y="93" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- Card 2: Data Augmentation -->
+  <rect x="292" y="78" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="292" y="78" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="310" y="102" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Data Augmentation</text>
+  <text x="310" y="120" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">H-flip, rotation (20°), zoom (0.2),</text>
+  <text x="310" y="136" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">shear, width/height shift on train</text>
+  <text x="310" y="152" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">set only; val rescaled, never augmented</text>
+  <circle cx="510" cy="90" r="6" fill="#E05252"/>
+  <text x="518" y="93" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- Card 3: Class Imbalance Handling -->
+  <rect x="554" y="78" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="554" y="78" width="6" height="#88" rx="3" fill="#E05252"/>
+  <rect x="554" y="78" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="572" y="102" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Imbalance Handling</text>
+  <text x="572" y="120" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">sklearn balanced class weights</text>
+  <text x="572" y="136" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">computed from training labels and</text>
+  <text x="572" y="152" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">passed directly to model.fit()</text>
+  <circle cx="772" cy="90" r="6" fill="#E05252"/>
+  <text x="780" y="93" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- ── Row 2 ─────────────────────────────────────────────────────────────── -->
+
+  <!-- Card 4: EarlyStopping + ReduceLR -->
+  <rect x="30" y="184" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="30" y="184" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="48" y="208" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Adaptive Training</text>
+  <text x="48" y="226" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">EarlyStopping (patience=7) halts</text>
+  <text x="48" y="242" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">training; ReduceLROnPlateau (×0.5,</text>
+  <text x="48" y="258" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">p=3, min=1e-6) adjusts LR</text>
+  <circle cx="248" cy="196" r="6" fill="#E05252"/>
+  <text x="256" y="199" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- Card 5: Model Checkpointing -->
+  <rect x="292" y="184" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="292" y="184" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="310" y="208" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Model Checkpointing</text>
+  <text x="310" y="226" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Saves best val_accuracy model</text>
+  <text x="310" y="242" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">to .keras file; EarlyStopping</text>
+  <text x="310" y="258" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">restores best weights at halt</text>
+  <circle cx="510" cy="196" r="6" fill="#E05252"/>
+  <text x="518" y="199" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- Card 6: Classification Report -->
+  <rect x="554" y="184" width="236" height="88" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <rect x="554" y="184" width="6" height="88" rx="3" fill="#E05252"/>
+  <text x="572" y="208" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Classification Report</text>
+  <text x="572" y="226" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Per-class precision, recall, F1</text>
+  <text x="572" y="242" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">and macro/weighted averages via</text>
+  <text x="572" y="258" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">sklearn on val set predictions</text>
+  <circle cx="772" cy="196" r="6" fill="#E05252"/>
+  <text x="780" y="199" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">✓</text>
+
+  <!-- ── Row 3 ─────────────────────────────────────────────────────────────── -->
+
+  <!-- Card 7: Grad-CAM (planned) -->
+  <rect x="30" y="290" width="236" height="88" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="30" y="290" width="6" height="88" rx="3" fill="#F5A623"/>
+  <text x="48" y="314" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Grad-CAM Visualization</text>
+  <text x="48" y="332" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Heatmap overlay showing which</text>
+  <text x="48" y="348" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">image regions drove the prediction</text>
+  <text x="48" y="364" font-family="'Courier New', Courier, monospace" font-size="10" fill="#4E5568">→ planned</text>
+  <circle cx="248" cy="302" r="6" fill="#F5A623" opacity="0.4"/>
+
+  <!-- Card 8: REST API (planned) -->
+  <rect x="292" y="290" width="236" height="88" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="292" y="290" width="6" height="88" rx="3" fill="#F5A623"/>
+  <text x="310" y="314" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">REST API / Web UI</text>
+  <text x="310" y="332" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Upload image, receive JSON with</text>
+  <text x="310" y="348" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">top-3 predictions and confidence</text>
+  <text x="310" y="364" font-family="'Courier New', Courier, monospace" font-size="10" fill="#4E5568">→ planned</text>
+  <circle cx="510" cy="302" r="6" fill="#F5A623" opacity="0.4"/>
+
+  <!-- Card 9: Transfer Learning (planned) -->
+  <rect x="554" y="290" width="236" height="88" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="554" y="290" width="6" height="88" rx="3" fill="#F5A623"/>
+  <text x="572" y="314" font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#FFFFFF">Transfer Learning</text>
+  <text x="572" y="332" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Fine-tune EfficientNet/ResNet50V2</text>
+  <text x="572" y="348" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">backbone for improved accuracy</text>
+  <text x="572" y="364" font-family="'Courier New', Courier, monospace" font-size="10" fill="#4E5568">→ planned</text>
+  <circle cx="772" cy="302" r="6" fill="#F5A623" opacity="0.4"/>
+
+  <!-- ── Supported Classes ──────────────────────────────────────────────────── -->
+  <rect x="30" y="396" width="760" height="84" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1"/>
+  <text x="410" y="416" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#4A90E2">9 SUPPORTED SKIN CONDITIONS</text>
+
+  <g font-family="'Courier New', Courier, monospace" font-size="9">
+    <!-- Row 1 of classes -->
+    <rect x="44" y="424" width="140" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="114" y="437" text-anchor="middle" fill="#8B949E">Actinic Keratosis</text>
+
+    <rect x="194" y="424" width="150" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="269" y="437" text-anchor="middle" fill="#8B949E">Basal Cell Carcinoma</text>
+
+    <rect x="354" y="424" width="114" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="411" y="437" text-anchor="middle" fill="#8B949E">Dermatofibroma</text>
+
+    <rect x="478" y="424" width="80" height="18" rx="3" fill="#0D1117" stroke="#E05252" stroke-width="1"/>
+    <text x="518" y="437" text-anchor="middle" fill="#E05252">Melanoma</text>
+
+    <rect x="568" y="424" width="56" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="596" y="437" text-anchor="middle" fill="#8B949E">Nevus</text>
+
+    <!-- Row 2 of classes -->
+    <rect x="44" y="450" width="176" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="132" y="463" text-anchor="middle" fill="#8B949E">Pigm. Benign Keratosis</text>
+
+    <rect x="230" y="450" width="162" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="311" y="463" text-anchor="middle" fill="#8B949E">Seborrheic Keratosis</text>
+
+    <rect x="402" y="450" width="180" height="18" rx="3" fill="#0D1117" stroke="#E05252" stroke-width="1"/>
+    <text x="492" y="463" text-anchor="middle" fill="#E05252">Squamous Cell Carcinoma</text>
+
+    <rect x="592" y="450" width="110" height="18" rx="3" fill="#0D1117" stroke="#4E5568" stroke-width="1"/>
+    <text x="647" y="463" text-anchor="middle" fill="#8B949E">Vascular Lesion</text>
+  </g>
+</svg>
