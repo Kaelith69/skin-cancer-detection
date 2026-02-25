@@ -1,6 +1,6 @@
 # Troubleshooting
 
-This page covers the most common errors encountered when setting up or running the Skin Cancer Detection project, along with their solutions.
+Something broke. Happens to the best of us. This page covers the most common errors with their causes and fixes. If your specific error isn't here, check the [GitHub Issues](https://github.com/Kaelith69/skin-cancer-detection/issues) — someone has probably been there before you.
 
 ---
 
@@ -8,7 +8,7 @@ This page covers the most common errors encountered when setting up or running t
 
 ### `ModuleNotFoundError: No module named 'tensorflow'`
 
-**Cause:** The virtual environment is not activated, or `requirements.txt` was not installed into the correct environment.
+**Cause:** The virtual environment is not activated, or `requirements.txt` was not installed into the correct environment. Classic rookie mistake — don't feel bad, everyone does it at least once.
 
 **Fix:**
 
@@ -134,7 +134,7 @@ for gpu in gpus:
 
 ### Training is very slow (CPU only)
 
-**Cause:** TensorFlow is not detecting the GPU.
+**Cause:** TensorFlow is not detecting the GPU. Your training isn't broken — it's just going to take long enough for you to learn a second language while you wait.
 
 **Diagnosis:**
 

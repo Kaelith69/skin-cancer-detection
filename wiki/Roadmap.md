@@ -1,18 +1,20 @@
 # Roadmap
 
-This page outlines the planned improvements, features, and long-term vision for the Skin Cancer Detection project, organized by priority and theme.
+Where this project is going, in rough priority order. The baseline works — now let's make it actually good.
 
 ---
 
 ## Current State (Baseline)
 
-The current implementation provides a solid research baseline:
+The current implementation is a solid research baseline — and intentionally humble:
 
-- Custom VGG-style 3-block CNN
+- Custom VGG-style 3-block CNN (no pretrained weights, no shortcuts)
 - 9-class ISIC dermoscopy classification
 - Class-weighted training to handle dataset imbalance
 - EarlyStopping, ReduceLROnPlateau, and ModelCheckpoint callbacks
 - Full sklearn classification report
+
+It's not fancy. It's honest. That's the point.
 
 ---
 
@@ -20,9 +22,9 @@ The current implementation provides a solid research baseline:
 
 ### Transfer Learning Backbone
 
-Replace the custom CNN with a pre-trained backbone to significantly improve accuracy on small datasets:
+Replace the custom CNN with a pre-trained backbone. ~2,357 images is a small dataset for a CNN trained from scratch — transfer learning is the obvious next step:
 
-- **EfficientNetV2-S** or **MobileNetV3-Large** — strong accuracy / parameter ratio
+- **EfficientNetV2-S** or **MobileNetV3-Large** — strong accuracy/parameter ratio
 - Freeze all backbone layers initially; fine-tune top layers with a small learning rate
 - Expected accuracy improvement: 5–10 percentage points on the ISIC dataset
 
@@ -35,10 +37,10 @@ base_model.trainable = False
 
 ### Grad-CAM Explainability
 
-Add gradient-weighted class activation mapping (Grad-CAM) to produce heatmaps that highlight the image regions most influential for the model's prediction:
+Add gradient-weighted class activation mapping (Grad-CAM) to produce heatmaps that highlight the image regions most influential for the model's prediction. Because "the model said melanoma" is not a satisfying answer on its own:
 
 - Helps clinicians understand *why* the model predicts a given class
-- Can detect if the model is focusing on imaging artefacts rather than lesion features
+- Can detect if the model is focusing on imaging artifacts instead of lesion features
 - Output: overlaid heatmap image alongside class prediction
 
 ---

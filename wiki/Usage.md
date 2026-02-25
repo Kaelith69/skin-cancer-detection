@@ -1,6 +1,6 @@
 # Usage
 
-This page covers all runtime operations: training a model from scratch, evaluating it, running inference on new images, and customizing configuration.
+All the runtime operations: training from scratch, evaluating, running inference on new images, and configuring the important knobs. One command gets you most of the way there.
 
 ---
 
@@ -14,7 +14,9 @@ With the dataset prepared and dependencies installed:
 python main.py
 ```
 
-### What Happens
+That's the whole command. Go make coffee — the first epoch will take a while to warm up. On GPU it's tolerable. On CPU it's a commitment.
+
+### What Happens Under the Hood
 
 1. **Data loading** — `load_data('dataset/')` creates two `DirectoryIterator` objects: `train_data` (80%) and `validation_data` (20%)
 2. **Class-weight computation** — `compute_class_weight('balanced', ...)` calculates per-class weights from `train_data.classes`
@@ -151,7 +153,7 @@ for path, probs in zip(image_files, predictions):
 
 ## Configuration Reference
 
-All key constants are defined at the top of their respective modules.
+All constants are defined at the top of their respective modules. Change them there — don't hardcode values in the middle of functions and wonder why things break.
 
 ### `data_preprocessing.py`
 
