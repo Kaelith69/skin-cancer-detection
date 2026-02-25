@@ -1,3 +1,44 @@
+<div align="center">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 200" width="860" height="200" role="img" aria-label="Troubleshooting page header">
+  <defs>
+    <linearGradient id="tsHeroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#1c0a0a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a0a0a;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="tsAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="tsGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="860" height="200" rx="14" fill="url(#tsHeroBg)"/>
+  <g opacity="0.04" stroke="#ef4444" stroke-width="1" fill="none">
+    <line x1="0" y1="40" x2="860" y2="40"/><line x1="0" y1="80" x2="860" y2="80"/>
+    <line x1="0" y1="120" x2="860" y2="120"/><line x1="0" y1="160" x2="860" y2="160"/>
+    <line x1="86" y1="0" x2="86" y2="200"/><line x1="172" y1="0" x2="172" y2="200"/>
+    <line x1="258" y1="0" x2="258" y2="200"/><line x1="344" y1="0" x2="344" y2="200"/>
+    <line x1="430" y1="0" x2="430" y2="200"/><line x1="516" y1="0" x2="516" y2="200"/>
+    <line x1="602" y1="0" x2="602" y2="200"/><line x1="688" y1="0" x2="688" y2="200"/>
+    <line x1="774" y1="0" x2="774" y2="200"/>
+  </g>
+  <circle cx="760" cy="40" r="80" fill="#ef4444" opacity="0.07"/>
+  <circle cx="100" cy="160" r="70" fill="#f97316" opacity="0.07"/>
+  <rect x="0" y="0" width="860" height="4" fill="url(#tsAccent)" opacity="0.9"/>
+  <text x="430" y="88" font-family="'Segoe UI',system-ui,Arial,sans-serif" font-size="36"
+        font-weight="800" fill="white" text-anchor="middle" filter="url(#tsGlow)">Troubleshooting</text>
+  <text x="430" y="122" font-family="'Segoe UI',system-ui,Arial,sans-serif" font-size="15"
+        fill="#fecaca" text-anchor="middle">Common Errors · Installation Issues · Training Problems · Dataset Fixes</text>
+  <rect x="180" y="138" width="500" height="2" rx="1" fill="url(#tsAccent)" opacity="0.6"/>
+  <rect x="0" y="196" width="860" height="4" fill="url(#tsAccent)" opacity="0.5"/>
+</svg>
+
+</div>
+
 # Troubleshooting
 
 Something broke. Happens to the best of us. This page covers the most common errors with their causes and fixes. If your specific error isn't here, check the [GitHub Issues](https://github.com/Kaelith69/skin-cancer-detection/issues) — someone has probably been there before you.

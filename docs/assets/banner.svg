@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 260" width="960" height="260" role="img" aria-label="Skin Cancer Detection project banner">
+  <defs>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b1320;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f1f33;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#062127;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heroLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="960" height="260" rx="16" fill="url(#heroBg)" />
+  <rect x="0" y="0" width="960" height="5" fill="url(#heroLine)" />
+  <!-- Background decorative circles -->
+  <circle cx="840" cy="60" r="90" fill="#10b981" opacity="0.08" />
+  <circle cx="130" cy="210" r="85" fill="#2563eb" opacity="0.08" />
+  <!-- Grid lines -->
+  <g opacity="0.03" stroke="#0ea5e9" stroke-width="1" fill="none">
+    <line x1="0" y1="65" x2="960" y2="65"/>
+    <line x1="0" y1="130" x2="960" y2="130"/>
+    <line x1="0" y1="195" x2="960" y2="195"/>
+    <line x1="192" y1="0" x2="192" y2="260"/>
+    <line x1="384" y1="0" x2="384" y2="260"/>
+    <line x1="576" y1="0" x2="576" y2="260"/>
+    <line x1="768" y1="0" x2="768" y2="260"/>
+  </g>
+  <!-- Main title -->
+  <text x="480" y="108" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI',Arial,sans-serif" font-size="46" font-weight="800" filter="url(#glow)">Skin Cancer Detection</text>
+  <!-- Subtitle -->
+  <text x="480" y="148" text-anchor="middle" fill="#93c5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="18">TensorFlow/Keras · 9-Class Dermoscopy Classifier · Research/Education Only</text>
+  <!-- Tag line -->
+  <text x="480" y="186" text-anchor="middle" fill="#a7f3d0" font-family="'Segoe UI',Arial,sans-serif" font-size="15">VGG-style CNN baseline trained on ISIC class-folder datasets</text>
+  <!-- Bottom accent line -->
+  <rect x="0" y="255" width="960" height="5" rx="0" fill="url(#heroLine)" opacity="0.5"/>
+</svg>

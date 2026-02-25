@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="CNN Architecture Diagram">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#071e20;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="block1Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0e7490;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="block2Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b8f87;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="block3Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="headGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="boxShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="540" rx="16" fill="url(#archBg)"/>
+  <rect x="0" y="0" width="960" height="4" fill="url(#accentLine)"/>
+
+  <!-- Title -->
+  <text x="480" y="42" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI',Arial,sans-serif" font-size="22" font-weight="700">CNN Architecture — VGG-style 9-Class Classifier</text>
+  <text x="480" y="64" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI',Arial,sans-serif" font-size="13">Input 224×224×3  →  3 Conv Blocks  →  Dense Head  →  9-Class Softmax</text>
+
+  <!-- ── INPUT ── -->
+  <rect x="30" y="90" width="110" height="60" rx="8" fill="url(#inputGrad)" filter="url(#boxShadow)"/>
+  <text x="85" y="116" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700">INPUT</text>
+  <text x="85" y="133" text-anchor="middle" fill="#bfdbfe" font-family="'Segoe UI',Arial,sans-serif" font-size="11">224×224×3</text>
+
+  <!-- Arrow INPUT → B1 -->
+  <line x1="140" y1="120" x2="162" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ── BLOCK 1 ── -->
+  <!-- Block 1 background -->
+  <rect x="165" y="78" width="154" height="270" rx="10" fill="#0891b2" opacity="0.10"/>
+  <text x="242" y="99" text-anchor="middle" fill="#67e8f9" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700">BLOCK 1  ·  ×32</text>
+
+  <rect x="175" y="107" width="132" height="36" rx="6" fill="url(#block1Grad)" filter="url(#boxShadow)"/>
+  <text x="241" y="122" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(32, 3×3)</text>
+  <text x="241" y="136" text-anchor="middle" fill="#cffafe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 224×224×32</text>
+
+  <rect x="175" y="152" width="132" height="28" rx="6" fill="#164e63" opacity="0.9"/>
+  <text x="241" y="171" text-anchor="middle" fill="#a5f3fc" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="175" y="189" width="132" height="36" rx="6" fill="url(#block1Grad)" filter="url(#boxShadow)"/>
+  <text x="241" y="204" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(32, 3×3)</text>
+  <text x="241" y="218" text-anchor="middle" fill="#cffafe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 224×224×32</text>
+
+  <rect x="175" y="234" width="132" height="28" rx="6" fill="#164e63" opacity="0.9"/>
+  <text x="241" y="253" text-anchor="middle" fill="#a5f3fc" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="175" y="271" width="132" height="28" rx="6" fill="#083344" opacity="0.9"/>
+  <text x="241" y="290" text-anchor="middle" fill="#67e8f9" font-family="'Segoe UI',Arial,sans-serif" font-size="11">MaxPool(2×2) → 112×112</text>
+
+  <rect x="175" y="308" width="132" height="28" rx="6" fill="#083344" opacity="0.9"/>
+  <text x="241" y="327" text-anchor="middle" fill="#67e8f9" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Dropout(0.25)</text>
+
+  <!-- Arrow B1 → B2 -->
+  <line x1="319" y1="230" x2="341" y2="230" stroke="#64748b" stroke-width="2"/>
+  <polygon points="341,226 349,230 341,234" fill="#64748b"/>
+
+  <!-- ── BLOCK 2 ── -->
+  <rect x="352" y="78" width="154" height="270" rx="10" fill="#0b8f87" opacity="0.10"/>
+  <text x="429" y="99" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700">BLOCK 2  ·  ×64</text>
+
+  <rect x="362" y="107" width="132" height="36" rx="6" fill="url(#block2Grad)" filter="url(#boxShadow)"/>
+  <text x="428" y="122" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(64, 3×3)</text>
+  <text x="428" y="136" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 112×112×64</text>
+
+  <rect x="362" y="152" width="132" height="28" rx="6" fill="#065f46" opacity="0.9"/>
+  <text x="428" y="171" text-anchor="middle" fill="#a7f3d0" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="362" y="189" width="132" height="36" rx="6" fill="url(#block2Grad)" filter="url(#boxShadow)"/>
+  <text x="428" y="204" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(64, 3×3)</text>
+  <text x="428" y="218" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 112×112×64</text>
+
+  <rect x="362" y="234" width="132" height="28" rx="6" fill="#065f46" opacity="0.9"/>
+  <text x="428" y="253" text-anchor="middle" fill="#a7f3d0" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="362" y="271" width="132" height="28" rx="6" fill="#052e16" opacity="0.9"/>
+  <text x="428" y="290" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11">MaxPool(2×2) → 56×56</text>
+
+  <rect x="362" y="308" width="132" height="28" rx="6" fill="#052e16" opacity="0.9"/>
+  <text x="428" y="327" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Dropout(0.25)</text>
+
+  <!-- Arrow B2 → B3 -->
+  <line x1="506" y1="230" x2="528" y2="230" stroke="#64748b" stroke-width="2"/>
+  <polygon points="528,226 536,230 528,234" fill="#64748b"/>
+
+  <!-- ── BLOCK 3 ── -->
+  <rect x="539" y="78" width="154" height="270" rx="10" fill="#059669" opacity="0.10"/>
+  <text x="616" y="99" text-anchor="middle" fill="#34d399" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700">BLOCK 3  ·  ×128</text>
+
+  <rect x="549" y="107" width="132" height="36" rx="6" fill="url(#block3Grad)" filter="url(#boxShadow)"/>
+  <text x="615" y="122" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(128, 3×3)</text>
+  <text x="615" y="136" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 56×56×128</text>
+
+  <rect x="549" y="152" width="132" height="28" rx="6" fill="#064e3b" opacity="0.9"/>
+  <text x="615" y="171" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="549" y="189" width="132" height="36" rx="6" fill="url(#block3Grad)" filter="url(#boxShadow)"/>
+  <text x="615" y="204" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Conv2D(128, 3×3)</text>
+  <text x="615" y="218" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · same · 56×56×128</text>
+
+  <rect x="549" y="234" width="132" height="28" rx="6" fill="#064e3b" opacity="0.9"/>
+  <text x="615" y="253" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="549" y="271" width="132" height="28" rx="6" fill="#022c22" opacity="0.9"/>
+  <text x="615" y="290" text-anchor="middle" fill="#34d399" font-family="'Segoe UI',Arial,sans-serif" font-size="11">MaxPool(2×2) → 28×28</text>
+
+  <rect x="549" y="308" width="132" height="28" rx="6" fill="#022c22" opacity="0.9"/>
+  <text x="615" y="327" text-anchor="middle" fill="#34d399" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Dropout(0.25)</text>
+
+  <!-- Arrow B3 → Head -->
+  <line x1="693" y1="230" x2="715" y2="230" stroke="#64748b" stroke-width="2"/>
+  <polygon points="715,226 723,230 715,234" fill="#64748b"/>
+
+  <!-- ── CLASSIFICATION HEAD ── -->
+  <rect x="726" y="78" width="154" height="270" rx="10" fill="#7c3aed" opacity="0.10"/>
+  <text x="803" y="99" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700">CLASS HEAD</text>
+
+  <rect x="736" y="107" width="132" height="28" rx="6" fill="#3b0764" opacity="0.9"/>
+  <text x="802" y="126" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Flatten → 100,352</text>
+
+  <rect x="736" y="144" width="132" height="36" rx="6" fill="url(#headGrad)" filter="url(#boxShadow)"/>
+  <text x="802" y="159" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Dense(256)</text>
+  <text x="802" y="173" text-anchor="middle" fill="#ede9fe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReLU · 256 units</text>
+
+  <rect x="736" y="189" width="132" height="28" rx="6" fill="#3b0764" opacity="0.9"/>
+  <text x="802" y="208" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="11">BatchNorm</text>
+
+  <rect x="736" y="226" width="132" height="28" rx="6" fill="#3b0764" opacity="0.9"/>
+  <text x="802" y="245" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Dropout(0.50)</text>
+
+  <rect x="736" y="263" width="132" height="36" rx="6" fill="url(#outputGrad)" filter="url(#boxShadow)"/>
+  <text x="802" y="278" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600">Dense(9)</text>
+  <text x="802" y="292" text-anchor="middle" fill="#fee2e2" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Softmax · 9 classes</text>
+
+  <!-- Arrow Head → Output -->
+  <line x1="880" y1="281" x2="906" y2="281" stroke="#64748b" stroke-width="2"/>
+  <polygon points="906,277 914,281 906,285" fill="#64748b"/>
+
+  <!-- ── OUTPUT ── -->
+  <rect x="916" y="255" width="30" height="52" rx="6" fill="url(#outputGrad)" filter="url(#boxShadow)"/>
+  <text x="931" y="281" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" transform="rotate(-90,931,281)">9 cls</text>
+
+  <!-- ── DIMENSIONS ROW ── -->
+  <text x="85" y="380" text-anchor="middle" fill="#64748b" font-family="'Segoe UI',Arial,sans-serif" font-size="10">224×224×3</text>
+  <text x="242" y="380" text-anchor="middle" fill="#67e8f9" font-family="'Segoe UI',Arial,sans-serif" font-size="10">→ 112×112×32</text>
+  <text x="429" y="380" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="10">→ 56×56×64</text>
+  <text x="616" y="380" text-anchor="middle" fill="#34d399" font-family="'Segoe UI',Arial,sans-serif" font-size="10">→ 28×28×128</text>
+  <text x="803" y="380" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="10">→ softmax(9)</text>
+
+  <!-- ── LEGEND ── -->
+  <rect x="30" y="410" width="900" height="100" rx="10" fill="#0f172a" opacity="0.8"/>
+  <text x="480" y="432" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600">Training Configuration</text>
+
+  <rect x="50" y="444" width="12" height="12" rx="3" fill="#0891b2"/>
+  <text x="68" y="455" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Optimizer: Adam</text>
+
+  <rect x="200" y="444" width="12" height="12" rx="3" fill="#7c3aed"/>
+  <text x="218" y="455" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Loss: Categorical Cross-Entropy</text>
+
+  <rect x="440" y="444" width="12" height="12" rx="3" fill="#059669"/>
+  <text x="458" y="455" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Metric: Accuracy</text>
+
+  <rect x="600" y="444" width="12" height="12" rx="3" fill="#dc2626"/>
+  <text x="618" y="455" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Classes: 9 (ISIC dermoscopy)</text>
+
+  <rect x="50" y="466" width="12" height="12" rx="3" fill="#1d4ed8"/>
+  <text x="68" y="477" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">EarlyStopping (patience=7)</text>
+
+  <rect x="200" y="466" width="12" height="12" rx="3" fill="#0b8f87"/>
+  <text x="218" y="477" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">ModelCheckpoint (best val_acc)</text>
+
+  <rect x="440" y="466" width="12" height="12" rx="3" fill="#d97706"/>
+  <text x="458" y="477" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">ReduceLROnPlateau (×0.5)</text>
+
+  <rect x="600" y="466" width="12" height="12" rx="3" fill="#9333ea"/>
+  <text x="618" y="477" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">ClassWeight: balanced</text>
+
+  <text x="480" y="500" text-anchor="middle" fill="#475569" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Batch size: 32  ·  Max epochs: 50  ·  Val split: 20%  ·  Input: 224×224×3 RGB  ·  Seed: 42</text>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="536" width="960" height="4" rx="0" fill="url(#accentLine)" opacity="0.5"/>
+</svg>
