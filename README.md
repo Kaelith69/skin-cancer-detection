@@ -133,6 +133,12 @@
 
 **Skin Cancer Detection** is a deep-learning research project that classifies dermoscopic skin-lesion images into **9 distinct diagnostic categories** using a custom CNN built with TensorFlow/Keras.
 
+| Configuration | Value |
+|---|---|
+| **Project Name** | Skin Cancer Detection |
+| **Project Purpose** | Multi-class classification of dermoscopic lesion images for research and education |
+| **Domain** | Healthcare AI |
+
 This thing reads a skin image faster than your brain reads a stack trace — and it doesn't panic when it sees something weird.
 
 The model trains on the publicly available **ISIC (International Skin Imaging Collaboration)** archive and implements the kind of ML engineering practices that make code reviewers actually nod instead of opening GitHub issues:
