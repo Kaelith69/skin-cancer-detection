@@ -81,7 +81,7 @@
     <text x="174" y="18" font-family="'Segoe UI',Arial,sans-serif" font-size="12"
           fill="#60a5fa" text-anchor="middle" font-weight="600">224x224 Input</text>
     <text x="294" y="18" font-family="'Segoe UI',Arial,sans-serif" font-size="12"
-          fill="#10B981" text-anchor="middle" font-weight="600">~2,357 Images</text>
+          fill="#10B981" text-anchor="middle" font-weight="600">~2,239 Images</text>
     <text x="414" y="18" font-family="'Segoe UI',Arial,sans-serif" font-size="12"
           fill="#a78bfa" text-anchor="middle" font-weight="600">VGG-style CNN</text>
   </g>
@@ -322,7 +322,7 @@ The CNN follows a **VGG-style triple-block** design — three convolutional bloc
         font-weight="700" fill="white" text-anchor="middle">Data Flow Pipeline</text>
   <rect x="20"  y="55" width="120" height="60" rx="8" fill="#0B8F87" opacity="0.2" stroke="#0B8F87" stroke-width="1.5"/>
   <text x="80"  y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700" fill="#0B8F87" text-anchor="middle">ISIC Dataset</text>
-  <text x="80"  y="95" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">~2,357 images</text>
+  <text x="80"  y="95" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">~2,239 images</text>
   <text x="80" y="110" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">9 class folders</text>
   <line x1="140" y1="85" x2="163" y2="85" stroke="#0B8F87" stroke-width="1.5" marker-end="url(#arrowDf)"/>
   <rect x="165" y="55" width="130" height="60" rx="8" fill="#2563EB" opacity="0.2" stroke="#2563EB" stroke-width="1.5"/>
@@ -396,7 +396,7 @@ The CNN follows a **VGG-style triple-block** design — three convolutional bloc
 ```
 skin-cancer-detection/
 |
-+-- dataset/                           # Root dataset directory (not committed)
++-- dataset/                           # Root dataset directory (included in this repository)
 |   +-- actinic_keratosis/             # Pre-malignant
 |   +-- basal_cell_carcinoma/          # Malignant
 |   +-- dermatofibroma/                # Benign
@@ -428,7 +428,7 @@ skin-cancer-detection/
 
 ## Dataset
 
-The dataset consists of **~2,357 dermoscopic images** from the **International Skin Imaging Collaboration (ISIC)** archive, organized into 9 class folders. The dataset is not committed to the repository — you'll need to download it yourself (instructions in [Installation](wiki/Installation.md)).
+The dataset consists of **~2,239 dermoscopic images** from the **International Skin Imaging Collaboration (ISIC)** archive, organized into 9 class folders. The dataset is included in this repository clone for convenience (instructions in [Installation](wiki/Installation.md)).
 
 | # | Class | Lesion Type |
 |---|---|---|
@@ -632,7 +632,7 @@ All key constants live at the top of their respective modules. Change them there
   <rect width="860" height="180" fill="url(#perfBg)" rx="14"/>
   <rect x="0" y="0" width="860" height="3" fill="url(#perfTeal)" rx="0"/>
   <text x="430" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="14"
-        font-weight="700" fill="white" text-anchor="middle">Performance Metrics (Illustrative — ISIC ~2,357 images)</text>
+        font-weight="700" fill="white" text-anchor="middle">Performance Metrics (Illustrative — ISIC ~2,239 images)</text>
   <rect x="30"  y="50" width="170" height="110" rx="10" fill="#0B8F87" opacity="0.15" stroke="#0B8F87" stroke-width="1.5"/>
   <text x="115" y="90"  font-family="'Segoe UI',Arial,sans-serif" font-size="32" font-weight="800" fill="#0B8F87" text-anchor="middle">~92%</text>
   <text x="115" y="115" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Validation Accuracy</text>
@@ -684,7 +684,7 @@ For full details, see [Privacy](wiki/Privacy.md).
 
 | Priority | Item |
 |---|---|
-| 🔴 High | Transfer learning backbone (EfficientNetV2, MobileNetV3) — because ~2,357 images is humble for a CNN |
+| 🔴 High | Transfer learning backbone (EfficientNetV2, MobileNetV3) — because ~2,239 images is humble for a CNN |
 | 🔴 High | Grad-CAM heatmaps — so the model can show its work instead of just asserting "melanoma" |
 | 🟡 Medium | TensorFlow Lite export — for on-device inference on mobile hardware |
 | 🟡 Medium | FastAPI REST wrapper — for when you want predictions over HTTP instead of a Python import |

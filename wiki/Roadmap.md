@@ -22,7 +22,7 @@ It's not fancy. It's honest. That's the point.
 
 ### Transfer Learning Backbone
 
-Replace the custom CNN with a pre-trained backbone. ~2,357 images is a small dataset for a CNN trained from scratch — transfer learning is the obvious next step:
+Replace the custom CNN with a pre-trained backbone. ~2,239 images is a small dataset for a CNN trained from scratch — transfer learning is the obvious next step:
 
 - **EfficientNetV2-S** or **MobileNetV3-Large** — strong accuracy/parameter ratio
 - Freeze all backbone layers initially; fine-tune top layers with a small learning rate

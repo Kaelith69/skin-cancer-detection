@@ -95,7 +95,7 @@ python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU')
 
 1. Visit [https://www.isic-archive.com](https://www.isic-archive.com)
 2. Register for a free research account
-3. Download the ISIC 2019 or 2020 training dataset (~2,357 total images used in this project; after the 80/20 split, ~1,885 are used for training and ~472 for validation)
+3. Download the ISIC 2019 or 2020 training dataset (~2,239 total images used in this project; after the 80/20 split, approximately ~1,792 are used for training and ~447 for validation)
 
 ### Organize
 
