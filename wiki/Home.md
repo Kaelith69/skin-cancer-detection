@@ -85,7 +85,7 @@ This model reads a skin image and outputs a probability distribution across 9 cl
 | **Model type** | Custom VGG-style CNN |
 | **Input size** | 224 × 224 × 3 |
 | **Output classes** | 9 |
-| **Dataset** | ISIC (~2,357 images) |
+| **Dataset** | ISIC (~2,239 images) |
 | **License** | MIT |
 
 ---
@@ -114,7 +114,7 @@ skin-cancer-detection/
 |-- model.py                # CNN architecture — VGG-style, built from scratch
 |-- main.py                 # Training, evaluation, reporting — one file to rule them all
 |-- requirements.txt        # Pinned dependencies
-|-- dataset/                # Image folders (one per class, not committed)
+|-- dataset/                # Image folders (one per class, included in this repository)
 |-- wiki/                   # You are here
 `-- LICENSE
 ```

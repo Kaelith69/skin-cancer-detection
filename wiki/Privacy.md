@@ -28,7 +28,7 @@ This page documents the data handling practices, security model, and regulatory 
 | Artefact | Location | Contains PII? |
 |---|---|---|
 | Model weights | `skin_cancer_model.keras` | No |
-| Training images | `dataset/` (not committed) | No — ISIC only |
+| Training images | `dataset/` (included in this repository) | No — ISIC only |
 | Source code | `*.py` | No |
 | Configuration | `requirements.txt` | No |
 
