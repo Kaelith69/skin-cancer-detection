@@ -131,16 +131,18 @@
 
 ## Overview
 
-**Skin Cancer Detection** is a deep-learning research project that classifies dermoscopic skin-lesion images into **9 distinct diagnostic categories** using a custom Convolutional Neural Network (CNN) built with TensorFlow/Keras.
+**Skin Cancer Detection** is a deep-learning research project that classifies dermoscopic skin-lesion images into **9 distinct diagnostic categories** using a custom CNN built with TensorFlow/Keras.
 
-The model is trained on the publicly available **ISIC (International Skin Imaging Collaboration)** archive and implements clinical-grade ML engineering practices:
+This thing reads a skin image faster than your brain reads a stack trace — and it doesn't panic when it sees something weird.
 
-- Separate augmentation pipelines for training vs. validation — zero data leakage
+The model trains on the publicly available **ISIC (International Skin Imaging Collaboration)** archive and implements the kind of ML engineering practices that make code reviewers actually nod instead of opening GitHub issues:
+
+- Separate augmentation pipelines for training vs. validation — zero data leakage, zero excuses
 - Batch Normalization after every convolutional layer for stable, fast convergence
 - Automatic class-weight balancing to handle the inherently skewed medical dataset
 - Smart training callbacks: EarlyStopping, ReduceLROnPlateau, and ModelCheckpoint
 
-> ⚠️ **Medical Disclaimer:** This project is intended for research and educational purposes only. It is **not** a certified medical device and must **not** be used to replace professional dermatological diagnosis.
+> ⚠️ **Medical Disclaimer:** This project is for research and educational purposes only. It is **not** a certified medical device and must **not** replace professional dermatological diagnosis. Seriously — go see a doctor.
 
 ---
 
@@ -282,11 +284,11 @@ The model is trained on the publicly available **ISIC (International Skin Imagin
 </svg>
 </div>
 
-The CNN follows a **VGG-style triple-block** design:
+The CNN follows a **VGG-style triple-block** design — three convolutional blocks, each doubling filter count while halving spatial resolution, feeding into a classification head with enough dropout to make overfitting cry. The optimizer is Adam because life is too short to tune learning rates by hand.
 
 - **Optimizer:** Adam
 - **Loss:** Categorical Cross-Entropy
-- **Metrics:** Accuracy
+- **Metrics:** Top-1 Accuracy
 - **Regularization:** BatchNormalization + Dropout at every block
 
 ---
@@ -373,13 +375,13 @@ The CNN follows a **VGG-style triple-block** design:
 |---|---|
 | **9-Class classification** | Actinic Keratosis, Basal Cell Carcinoma, Dermatofibroma, Melanoma, Nevus, Pigmented Benign Keratosis, Seborrheic Keratosis, Squamous Cell Carcinoma, Vascular Lesion |
 | **Training augmentation** | Horizontal flip, rotation ±20°, zoom ±20%, width/height shift ±10%, shear ±10% |
-| **Strict val/train separation** | Separate `ImageDataGenerator` instances — augmentation applied only to training data |
-| **Batch Normalization** | After every Conv2D layer — faster convergence, implicit regularization |
-| **Class imbalance correction** | `sklearn` `compute_class_weight('balanced')` applied per training epoch |
+| **Strict val/train separation** | Separate `ImageDataGenerator` instances — augmentation hits training only, not validation |
+| **Batch Normalization** | After every Conv2D layer — faster convergence, implicit regularization, no excuses |
+| **Class imbalance correction** | `sklearn` `compute_class_weight('balanced')` — because nevus doesn't get to bully vascular lesion |
 | **Smart callbacks** | EarlyStopping (patience=7), ReduceLROnPlateau (factor=0.5, patience=3, min_lr=1e-6), ModelCheckpoint |
-| **Modern model format** | Saved as `.keras` — not the legacy `.h5` format |
-| **Full per-class report** | `sklearn` classification report: precision, recall, F1-score, support for every class |
-| **Reproducibility** | Fixed `seed=42` across all data generators |
+| **Modern model format** | Saved as `.keras` — not the deprecated `.h5` format that haunts legacy codebases |
+| **Full per-class report** | precision, recall, F1-score, support for every class — no hiding behind macro averages |
+| **Reproducibility** | Fixed `seed=42` because reproducible chaos is still chaos, just polite chaos |
 
 ---
 
@@ -420,7 +422,7 @@ skin-cancer-detection/
 
 ## Dataset
 
-The dataset consists of **~2,357 dermoscopic images** from the **International Skin Imaging Collaboration (ISIC)** archive, organized into 9 class folders.
+The dataset consists of **~2,357 dermoscopic images** from the **International Skin Imaging Collaboration (ISIC)** archive, organized into 9 class folders. The dataset is not committed to the repository — you'll need to download it yourself (instructions in [Installation](wiki/Installation.md)).
 
 | # | Class | Lesion Type |
 |---|---|---|
@@ -434,13 +436,13 @@ The dataset consists of **~2,357 dermoscopic images** from the **International S
 | 8 | `squamous_cell_carcinoma` | Malignant |
 | 9 | `vascular_lesion` | Benign |
 
-Download from [ISIC Archive](https://www.isic-archive.com) and place images in the matching sub-folders inside `dataset/`.
+Download from [ISIC Archive](https://www.isic-archive.com) and place images in the matching sub-folders inside `dataset/`. Sub-folder names must match exactly — TensorFlow's `flow_from_directory` is case-sensitive and will not negotiate.
 
 ---
 
 ## Data Preprocessing
 
-> ⚠️ **Critical design choice:** Augmentation is applied **only to training data**. The validation generator uses rescaling only, strictly preventing data leakage.
+> **Critical design choice:** Augmentation is applied **only to training data**. The validation generator uses rescaling only, strictly preventing data leakage. This isn't optional — it's what makes your metrics honest.
 
 **Training pipeline (`train_datagen`):**
 
@@ -479,13 +481,13 @@ model = build_model(num_classes=9, input_shape=(224, 224, 3))
 model.summary()
 ```
 
-Key engineering decisions:
+Key engineering decisions — and why they were made:
 
-- **`padding='same'`** on all Conv2D layers — preserves spatial dimensions through convolution
-- **BatchNormalization** after every Conv2D — normalizes activations, reduces internal covariate shift
+- **`padding='same'`** on all Conv2D layers — preserves spatial dimensions through convolution, no accidental shrinkage
+- **BatchNormalization** after every Conv2D — normalizes activations, reduces internal covariate shift, makes training less of a lottery
 - **Dual Conv → MaxPool** pattern per block — richer hierarchical feature extraction before downsampling
-- **Dropout(0.25)** after each pooling layer and **Dropout(0.5)** in the head — prevents co-adaptation of neurons
-- **Class-weight balancing** in `main.py` — handles the inherently skewed medical dataset without oversampling
+- **Dropout(0.25)** after each pooling layer and **Dropout(0.5)** in the head — the model must earn its predictions, not memorize the training set
+- **Class-weight balancing** in `main.py` — tells the optimizer that getting vascular lesion right matters as much as getting nevus right, despite the massive sample size difference
 
 ---
 
@@ -493,9 +495,9 @@ Key engineering decisions:
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.9+
 - pip (or conda)
-- A CUDA-capable GPU is recommended for reasonable training times
+- A CUDA-capable GPU is strongly recommended — CPU training is technically possible, but you'll age visibly
 
 ### 1. Clone the repository
 
@@ -504,7 +506,7 @@ git clone https://github.com/Kaelith69/skin-cancer-detection.git
 cd skin-cancer-detection
 ```
 
-### 2. Create and activate a virtual environment (recommended)
+### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
@@ -517,12 +519,13 @@ venv\Scripts\activate
 ### 3. Install dependencies
 
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 ### 4. Prepare the dataset
 
-Download the ISIC dataset and place images in the class-named sub-folders under `dataset/`.
+Download the ISIC dataset and drop images into the class-named sub-folders inside `dataset/`. Full instructions in [Installation](wiki/Installation.md).
 
 ---
 
@@ -534,16 +537,11 @@ Download the ISIC dataset and place images in the class-named sub-folders under 
 python main.py
 ```
 
-Training will:
-1. Load and augment images from `dataset/`
-2. Compute per-class weights to handle imbalance
-3. Train for up to 50 epochs with early stopping (patience=7)
-4. Save the best checkpoint to `skin_cancer_model.keras`
-5. Print a full per-class classification report
+That's it. One command. The script loads data, builds the model, trains with all callbacks enabled, saves the best checkpoint, and prints a full per-class evaluation report. Go make coffee — it'll take a while on CPU.
 
 ### Evaluation
 
-The `main.py` script automatically evaluates the model after training:
+After training completes, you'll see something like:
 
 ```
 Validation Loss:     0.2341
@@ -563,7 +561,7 @@ Classification Report:
            vascular_lesion      0.91    0.89      0.90       19
 ```
 
-> *Illustrative output — actual numbers vary by dataset version, hardware, and random seed.*
+> *Illustrative output. Actual numbers vary by dataset version, hardware, and random seed.*
 
 ### Making Predictions
 
@@ -596,15 +594,17 @@ print(f'Confidence      : {confidence:.2f}%')
 
 ## Configuration
 
+All key constants live at the top of their respective modules. Change them there — don't scatter magic numbers throughout the codebase.
+
 | File | Constant | Default | Description |
 |---|---|---|---|
 | `data_preprocessing.py` | `IMG_SIZE` | `(224, 224)` | Resize target for all images |
-| `data_preprocessing.py` | `BATCH_SIZE` | `32` | Mini-batch size |
+| `data_preprocessing.py` | `BATCH_SIZE` | `32` | Mini-batch size — reduce to 16 or 8 if you hit OOM errors |
 | `data_preprocessing.py` | `VALIDATION_SPLIT` | `0.2` | Fraction held out for validation |
-| `data_preprocessing.py` | `SEED` | `42` | Random seed for reproducibility |
+| `data_preprocessing.py` | `SEED` | `42` | Random seed — the one constant in an uncertain universe |
 | `model.py` | `NUM_CLASSES` | `9` | Number of output classes |
-| `model.py` | `IMG_SHAPE` | `(224, 224, 3)` | Default input shape |
-| `main.py` | `EPOCHS` | `50` | Maximum training epochs |
+| `model.py` | `IMG_SHAPE` | `(224, 224, 3)` | Default input tensor shape |
+| `main.py` | `EPOCHS` | `50` | Maximum training epochs (EarlyStopping will usually kick in first) |
 | `main.py` | `MODEL_SAVE_PATH` | `skin_cancer_model.keras` | Checkpoint save path |
 
 ---
@@ -646,37 +646,31 @@ print(f'Confidence      : {confidence:.2f}%')
 </svg>
 </div>
 
-> **Note:** Performance figures are illustrative targets. Actual results depend on dataset split, hardware, and TensorFlow version.
+> **Note:** These are illustrative targets based on the ISIC dataset. Actual results depend on your dataset split, hardware, TensorFlow version, and the mood of your GPU.
 
 ---
 
 ## Design Principles
 
-1. **No data leakage** — Augmentation is strictly confined to the training generator. Validation images are rescaled only.
-2. **Reproducibility** — `seed=42` is set across all generators. Model initialisation randomness is controlled by TensorFlow global seed.
-3. **Clinical realism** — Class-weight balancing reflects the unequal prevalence of skin conditions in real-world dermatology datasets.
-4. **Modular code** — Each concern (data loading, model definition, training orchestration) is isolated in its own module.
-5. **Modern artefact format** — Models are saved in the `.keras` format, not the deprecated `.h5` format.
-6. **Smart early termination** — `EarlyStopping` and `ReduceLROnPlateau` prevent wasted compute and overfitting.
-
----
-
-## Accessibility Considerations
-
-- All SVG diagrams include descriptive text annotations so assistive tools can convey content.
-- Classification output is printed as plain text to stdout, compatible with screen readers and terminal logging.
-- Class labels are human-readable strings (e.g., `melanoma`) — not opaque integer indices.
-- The prediction snippet returns both a class name and a confidence percentage for transparent output.
+1. **No data leakage** — Augmentation is strictly confined to the training generator. If you let augmented images into validation, your metrics are fiction.
+2. **Reproducibility** — `seed=42` across all generators. Controlled randomness is still randomness, just polite randomness.
+3. **Clinical realism** — Class-weight balancing reflects the unequal prevalence of skin conditions in real-world datasets. A model that ignores rare classes is just confidently wrong.
+4. **Modular code** — Data loading, model definition, and training orchestration live in separate modules. Spaghetti is for dinner, not for codebases.
+5. **Modern artifact format** — Models saved as `.keras`, not the deprecated `.h5` format. Future you will thank past you for this.
+6. **Smart early termination** — `EarlyStopping` and `ReduceLROnPlateau` stop the model from training past the point of usefulness. Compute isn't free.
 
 ---
 
 ## Privacy and Security
 
-- **No patient data is stored** in the repository. The `dataset/` directory contains only ISIC research images with associated public consent.
-- **No network calls** are made at inference time; the saved `.keras` model operates entirely offline.
-- **No telemetry** is collected by any component of this project.
-- Models trained on research datasets should **never** be deployed in production clinical workflows without regulatory approval (e.g., FDA 510(k), CE marking).
-- Ensure access controls on any server hosting trained model weights to prevent unauthorised use.
+No cloud. No spying. No villain origin story.
+
+- **No patient data in the repo** — `dataset/` is gitignored. The ISIC images you train on were collected under IRB protocols with patient consent.
+- **No network calls at inference** — the `.keras` model runs entirely offline. Your skin images stay on your machine.
+- **No telemetry** — zero callbacks phoning home. This is not a subscription service.
+- **Not for clinical deployment** — models trained on research datasets require FDA 510(k) clearance, CE marking, or equivalent regulatory approval before touching real patients. Do not skip this step.
+
+For full details, see [Privacy](wiki/Privacy.md).
 
 ---
 
@@ -684,14 +678,16 @@ print(f'Confidence      : {confidence:.2f}%')
 
 | Priority | Item |
 |---|---|
-| High | Migrate to a pre-trained backbone (EfficientNetV2, MobileNetV3) via transfer learning for higher accuracy |
-| High | Add Grad-CAM visualisation to highlight salient regions in dermoscopic images |
-| Medium | Export to TensorFlow Lite for on-device inference |
-| Medium | REST API wrapper (FastAPI) for serving predictions over HTTP |
-| Medium | Confusion matrix and ROC-AUC plots added to evaluation output |
-| Low | Docker container for environment-agnostic deployment |
-| Low | Hyperparameter tuning via Keras Tuner or Optuna |
-| Low | CI/CD pipeline with automated model evaluation on each commit |
+| 🔴 High | Transfer learning backbone (EfficientNetV2, MobileNetV3) — because ~2,357 images is humble for a CNN |
+| 🔴 High | Grad-CAM heatmaps — so the model can show its work instead of just asserting "melanoma" |
+| 🟡 Medium | TensorFlow Lite export — for on-device inference on mobile hardware |
+| 🟡 Medium | FastAPI REST wrapper — for when you want predictions over HTTP instead of a Python import |
+| 🟡 Medium | Confusion matrix + ROC-AUC plots — because per-class F1 scores deserve visual backup |
+| 🟢 Low | Docker container — for environment-agnostic deployment without the "it works on my machine" debate |
+| 🟢 Low | Hyperparameter tuning via Keras Tuner or Optuna |
+| 🟢 Low | CI/CD pipeline with automated model evaluation on each commit |
+
+Full details in [Roadmap](wiki/Roadmap.md).
 
 ---
 
@@ -708,7 +704,7 @@ print(f'Confidence      : {confidence:.2f}%')
 
 <div align="center">
 
-Built with care for dermatology research.
+Built for dermatology research. The model works. The developer is still debugging themselves.
 
 MIT License © 2024 Sayanth T M (Kaelith69)
 

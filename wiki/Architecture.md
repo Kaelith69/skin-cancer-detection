@@ -1,12 +1,12 @@
 # Architecture
 
-This page provides an in-depth technical description of the CNN architecture, module structure, and internal data flow of the Skin Cancer Detection project.
+This page is a deep-dive into the CNN architecture, module structure, and internal data flow. If you've ever wondered why a specific design decision was made instead of a dozen other reasonable alternatives, this is the place.
 
 ---
 
 ## High-Level Design
 
-The system is split into three Python modules, each with a single well-defined responsibility:
+Three Python modules, each with exactly one job. Because the moment a module has two jobs, it has infinite jobs.
 
 | Module | Responsibility |
 |---|---|
@@ -134,14 +134,16 @@ class_weight_dict = dict(enumerate(class_weights))
 ### Why VGG-style instead of a pre-trained backbone?
 
 This project is a purpose-built research baseline. A VGG-style architecture:
-- Is entirely transparent (no hidden pretrained weights)
-- Trains from scratch on the domain-specific ISIC data
+- Is entirely transparent — no hidden pretrained weights, no "trust me bro" ImageNet knowledge
+- Trains from scratch on domain-specific ISIC data
 - Provides a clear performance floor for comparing future transfer-learning experiments
+
+Think of it as the control group. You need a boring baseline before you can have interesting results.
 
 ### Why `.keras` format instead of `.h5`?
 
-The `.keras` format (introduced in TensorFlow 2.12) is the modern, recommended serialization format. It is more portable, supports more Keras objects, and will be the only supported format in future TF versions.
+The `.keras` format (introduced in TensorFlow 2.12) is the modern, recommended serialization format. It is more portable, supports more Keras objects, and will be the only supported format in future TF versions. The `.h5` format is like that old config file you keep around "just in case" — stop it.
 
 ### Why separate `ImageDataGenerator` instances?
 
-If the same generator (with augmentation) were used with both `subset='training'` and `subset='validation'`, augmentation would be applied to both subsets, causing artificial performance inflation on the validation set (data leakage).
+If the same generator (with augmentation) were used with both `subset='training'` and `subset='validation'`, augmentation would be applied to both subsets, causing artificial performance inflation on the validation set (data leakage). Your metrics would look great. Your model would be lying to you. These are not the same thing.

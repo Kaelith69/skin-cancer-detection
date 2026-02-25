@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to Skin Cancer Detection. This page describes the development workflow, code standards, and review process.
+Contributions are welcome. This page covers the development workflow, code standards, and review process — the things that make the difference between a PR that gets merged and a PR that sits in limbo until the heat death of the universe.
 
 ---
 

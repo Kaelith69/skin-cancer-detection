@@ -1,6 +1,8 @@
 # Privacy
 
-This page documents the data handling practices, security model, and regulatory considerations for the Skin Cancer Detection project.
+No cloud. No spying. No villain origin story.
+
+This page documents the data handling practices, security model, and regulatory considerations for the Skin Cancer Detection project. Short version: everything stays local, nothing phones home, and this is a research tool not a clinical device.
 
 ---
 
@@ -45,6 +47,8 @@ The trained model operates in a fully offline, local execution context. There ar
 - Cloud storage uploads
 - Analytics or telemetry callbacks
 
+If you put a network sniffer on this thing, you'll get bored quickly.
+
 ### Model Weight Security
 
 Trained `.keras` model files contain learned numerical weights — no patient data is embedded. However:
@@ -67,7 +71,7 @@ pip install --upgrade -r requirements.txt
 
 > **This project is a research tool, not a medical device.**
 
-Any deployment of this system in a clinical or patient-facing context would require, depending on jurisdiction:
+Any deployment in a clinical or patient-facing context would require — depending on jurisdiction — formal regulatory approval. This is not optional and not a formality. The table below is a starting point, not a checklist you can skip.
 
 | Jurisdiction | Applicable Regulation |
 |---|---|

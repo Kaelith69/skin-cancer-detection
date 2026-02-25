@@ -1,6 +1,6 @@
 # Installation
 
-This page covers everything needed to get the project running locally, from cloning the repository to preparing the dataset.
+Everything you need to get this running — from cloning the repo to having a trained model ready. Follow these steps and you'll spend exactly zero time debugging "why does it say module not found."
 
 ---
 
@@ -10,7 +10,7 @@ This page covers everything needed to get the project running locally, from clon
 |---|---|---|
 | Python | 3.9 | 3.10 or 3.11 |
 | RAM | 8 GB | 16 GB+ |
-| GPU | None (CPU fallback) | CUDA-capable NVIDIA GPU |
+| GPU | None (CPU fallback, bring patience) | CUDA-capable NVIDIA GPU |
 | CUDA | — | 11.x or 12.x (matching TF version) |
 | Disk | 2 GB (code + deps) | 5 GB+ (code + deps + dataset) |
 
@@ -31,7 +31,7 @@ cd skin-cancer-detection
 
 ## Step 2 — Create a Virtual Environment
 
-Using a virtual environment isolates project dependencies from your system Python.
+Using a virtual environment isolates project dependencies from your system Python. This is not optional — it's what separates "it works on my machine" from "it works on everyone's machine."
 
 ### Linux / macOS
 
@@ -54,7 +54,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-You should see `(venv)` prefixed on your terminal prompt.
+You should see `(venv)` prefixed on your terminal prompt. If you don't, re-read this section. The venv didn't activate itself.
 
 ---
 
@@ -118,7 +118,7 @@ dataset/
 `-- vascular_lesion/
 ```
 
-> **Important:** Each sub-folder name must exactly match the class names listed above. TensorFlow's `flow_from_directory` infers class labels from folder names.
+> **Important:** Each sub-folder name must exactly match the class names listed above. TensorFlow's `flow_from_directory` infers class labels from folder names and it is case-sensitive. A folder named `Melanoma` is not the same as `melanoma`. Yes, this has bitten people before.
 
 ### Verify Dataset Structure
 
