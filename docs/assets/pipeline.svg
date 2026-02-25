@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-label="Training Data Pipeline Diagram">
+  <defs>
+    <linearGradient id="pipeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#071e20;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="pipeAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="diskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="augGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0e7490;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="valGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="modelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="outputGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow2">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="360" rx="16" fill="url(#pipeBg)"/>
+  <rect x="0" y="0" width="960" height="4" fill="url(#pipeAccent)"/>
+
+  <!-- Title -->
+  <text x="480" y="36" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI',Arial,sans-serif" font-size="20" font-weight="700">Training Data Pipeline</text>
+  <text x="480" y="56" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI',Arial,sans-serif" font-size="13">dataset/ class folders  →  augmentation split  →  CNN training  →  model checkpoint</text>
+
+  <!-- ── ROW 1: Disk → Split → Train gen / Val gen ── -->
+
+  <!-- Disk / Dataset -->
+  <rect x="30" y="90" width="130" height="80" rx="10" fill="url(#diskGrad)" filter="url(#shadow2)"/>
+  <text x="95" y="120" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700">dataset/</text>
+  <text x="95" y="138" text-anchor="middle" fill="#bfdbfe" font-family="'Segoe UI',Arial,sans-serif" font-size="11">9 class folders</text>
+  <text x="95" y="155" text-anchor="middle" fill="#93c5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="10">~2,239 images</text>
+
+  <!-- Arrow → Split -->
+  <line x1="160" y1="130" x2="198" y2="130" stroke="#475569" stroke-width="2"/>
+  <polygon points="198,126 206,130 198,134" fill="#475569"/>
+
+  <!-- Split box -->
+  <rect x="209" y="104" width="120" height="52" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="269" y="126" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600">80 / 20 Split</text>
+  <text x="269" y="143" text-anchor="middle" fill="#64748b" font-family="'Segoe UI',Arial,sans-serif" font-size="10">validation_split=0.2, seed=42</text>
+
+  <!-- Arrow Split → Train gen (up branch) -->
+  <line x1="329" y1="118" x2="380" y2="90" stroke="#0891b2" stroke-width="2"/>
+  <polygon points="376,86 384,88 380,96" fill="#0891b2"/>
+
+  <!-- Arrow Split → Val gen (down branch) -->
+  <line x1="329" y1="143" x2="380" y2="170" stroke="#7c3aed" stroke-width="2"/>
+  <polygon points="376,165 384,170 380,177" fill="#7c3aed"/>
+
+  <!-- Training Generator -->
+  <rect x="383" y="62" width="160" height="88" rx="10" fill="url(#augGrad)" filter="url(#shadow2)"/>
+  <text x="463" y="83" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700">Train Generator</text>
+  <text x="463" y="99" text-anchor="middle" fill="#cffafe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Rescale 1/255</text>
+  <text x="463" y="113" text-anchor="middle" fill="#cffafe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Flip · Rotate ±20° · Zoom ±20%</text>
+  <text x="463" y="127" text-anchor="middle" fill="#cffafe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Shift ±10% · Shear ±10%</text>
+  <text x="463" y="141" text-anchor="middle" fill="#67e8f9" font-family="'Segoe UI',Arial,sans-serif" font-size="10">~1,791 images · batch=32</text>
+
+  <!-- Validation Generator -->
+  <rect x="383" y="162" width="160" height="68" rx="10" fill="url(#valGrad)" filter="url(#shadow2)"/>
+  <text x="463" y="183" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700">Val Generator</text>
+  <text x="463" y="199" text-anchor="middle" fill="#ede9fe" font-family="'Segoe UI',Arial,sans-serif" font-size="10">Rescale 1/255  (no augmentation)</text>
+  <text x="463" y="215" text-anchor="middle" fill="#c4b5fd" font-family="'Segoe UI',Arial,sans-serif" font-size="10">~448 images · shuffle=False</text>
+
+  <!-- Arrow Train gen → Class weights -->
+  <line x1="543" y1="106" x2="580" y2="106" stroke="#0891b2" stroke-width="2"/>
+  <polygon points="580,102 588,106 580,110" fill="#0891b2"/>
+
+  <!-- Class Weights box -->
+  <rect x="590" y="80" width="140" height="52" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="660" y="101" text-anchor="middle" fill="#fbbf24" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600">Class Weights</text>
+  <text x="660" y="118" text-anchor="middle" fill="#64748b" font-family="'Segoe UI',Arial,sans-serif" font-size="10">sklearn balanced strategy</text>
+
+  <!-- Arrow Val gen → Model training (down-right merge) -->
+  <line x1="543" y1="196" x2="730" y2="196" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="730" y1="196" x2="730" y2="165" stroke="#7c3aed" stroke-width="2"/>
+  <polygon points="726,165 730,157 734,165" fill="#7c3aed"/>
+
+  <!-- Arrow Class weights → model.fit -->
+  <line x1="730" y1="106" x2="730" y2="130" stroke="#fbbf24" stroke-width="2"/>
+  <polygon points="726,130 730,138 734,130" fill="#fbbf24"/>
+
+  <!-- model.fit box -->
+  <rect x="660" y="138" width="140" height="62" rx="10" fill="url(#modelGrad)" filter="url(#shadow2)"/>
+  <text x="730" y="161" text-anchor="middle" fill="#fff" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700">model.fit()</text>
+  <text x="730" y="178" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">50 epochs max · EarlyStopping</text>
+  <text x="730" y="192" text-anchor="middle" fill="#d1fae5" font-family="'Segoe UI',Arial,sans-serif" font-size="10">ReduceLROnPlateau · class_weight</text>
+
+  <!-- Arrow model.fit → Checkpoint -->
+  <line x1="800" y1="169" x2="838" y2="169" stroke="#059669" stroke-width="2"/>
+  <polygon points="838,165 846,169 838,173" fill="#059669"/>
+
+  <!-- ModelCheckpoint -->
+  <rect x="848" y="143" width="92" height="52" rx="10" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+  <text x="894" y="165" text-anchor="middle" fill="#6ee7b7" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700">Checkpoint</text>
+  <text x="894" y="181" text-anchor="middle" fill="#a7f3d0" font-family="'Segoe UI',Arial,sans-serif" font-size="10">.keras file</text>
+
+  <!-- ── BOTTOM LEGEND ── -->
+  <rect x="30" y="256" width="900" height="80" rx="10" fill="#0f172a" opacity="0.8"/>
+  <text x="480" y="278" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600">Augmentation Details (Training Set Only)</text>
+
+  <rect x="50" y="290" width="10" height="10" rx="2" fill="#0891b2"/>
+  <text x="66" y="300" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">horizontal_flip=True</text>
+
+  <rect x="200" y="290" width="10" height="10" rx="2" fill="#0891b2"/>
+  <text x="216" y="300" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">rotation_range=20</text>
+
+  <rect x="350" y="290" width="10" height="10" rx="2" fill="#0891b2"/>
+  <text x="366" y="300" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">zoom_range=0.2</text>
+
+  <rect x="500" y="290" width="10" height="10" rx="2" fill="#0891b2"/>
+  <text x="516" y="300" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">width/height_shift=0.1</text>
+
+  <rect x="680" y="290" width="10" height="10" rx="2" fill="#0891b2"/>
+  <text x="696" y="300" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">shear_range=0.1</text>
+
+  <rect x="50" y="312" width="10" height="10" rx="2" fill="#7c3aed"/>
+  <text x="66" y="322" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Val: rescale only — no augmentation (prevents data leakage)</text>
+
+  <rect x="430" y="312" width="10" height="10" rx="2" fill="#fbbf24"/>
+  <text x="446" y="322" fill="#cbd5e1" font-family="'Segoe UI',Arial,sans-serif" font-size="11">Class weights: n / (n_classes × count_i) per sklearn "balanced"</text>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="356" width="960" height="4" rx="0" fill="url(#pipeAccent)" opacity="0.5"/>
+</svg>

@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Trained model artefacts (large binary files)
+*.keras
+*.h5
+*.tflite
+*.pb
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temp
+*.log
+tmp/
+temp/
