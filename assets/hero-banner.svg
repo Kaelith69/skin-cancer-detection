@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="240" viewBox="0 0 820 240">
+  <!-- Dark background -->
+  <rect width="820" height="240" fill="#0D1117"/>
+
+  <!-- Decorative: hexagonal cellular grid (top-right) -->
+  <g opacity="0.12" stroke="#E05252" stroke-width="1" fill="none">
+    <polygon points="680,20 700,8 720,20 720,44 700,56 680,44"/>
+    <polygon points="720,20 740,8 760,20 760,44 740,56 720,44"/>
+    <polygon points="760,20 780,8 800,20 800,44 780,56 760,44"/>
+    <polygon points="700,56 720,44 740,56 740,80 720,92 700,80"/>
+    <polygon points="740,56 760,44 780,56 780,80 760,92 740,80"/>
+    <polygon points="780,56 800,44 820,56 820,80 800,92 780,80"/>
+    <polygon points="680,92 700,80 720,92 720,116 700,128 680,116"/>
+    <polygon points="720,92 740,80 760,92 760,116 740,128 720,116"/>
+    <polygon points="760,92 780,80 800,92 800,116 780,128 760,116"/>
+    <polygon points="700,128 720,116 740,128 740,152 720,164 700,152"/>
+    <polygon points="740,128 760,116 780,128 780,152 760,164 740,152"/>
+    <polygon points="780,128 800,116 820,128 820,152 800,164 780,152"/>
+    <polygon points="680,164 700,152 720,164 720,188 700,200 680,188"/>
+    <polygon points="720,164 740,152 760,164 760,188 740,200 720,188"/>
+    <polygon points="760,164 780,152 800,164 800,188 780,200 760,188"/>
+    <polygon points="700,200 720,188 740,200 740,224 720,236 700,224"/>
+    <polygon points="740,200 760,188 780,200 780,224 760,236 740,224"/>
+  </g>
+
+  <!-- Decorative scan-line circles (dermatoscope aesthetic) -->
+  <g opacity="0.08" stroke="#4A90E2" stroke-width="1" fill="none">
+    <circle cx="100" cy="120" r="80"/>
+    <circle cx="100" cy="120" r="60"/>
+    <circle cx="100" cy="120" r="40"/>
+    <circle cx="100" cy="120" r="20"/>
+    <!-- crosshair -->
+    <line x1="20" y1="120" x2="180" y2="120"/>
+    <line x1="100" y1="40" x2="100" y2="200"/>
+  </g>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="4" height="240" fill="#E05252"/>
+
+  <!-- Accent line under title area -->
+  <line x1="160" y1="155" x2="660" y2="155" stroke="#4E5568" stroke-width="1"/>
+
+  <!-- Project name -->
+  <text x="160" y="110" font-family="'Courier New', Courier, monospace" font-size="52" font-weight="700" letter-spacing="-1" fill="#FFFFFF">
+    Skin Cancer
+  </text>
+  <text x="160" y="148" font-family="'Courier New', Courier, monospace" font-size="52" font-weight="700" letter-spacing="-1" fill="#E05252">
+    Detection
+  </text>
+
+  <!-- Tagline -->
+  <text x="162" y="180" font-family="'Courier New', Courier, monospace" font-size="15" fill="#8B949E" letter-spacing="1">
+    9-class CNN classifier for dermatological image analysis
+  </text>
+
+  <!-- Tech stack pills -->
+  <g font-family="'Courier New', Courier, monospace" font-size="11">
+    <rect x="162" y="196" width="84" height="22" rx="4" fill="#161B22" stroke="#E05252" stroke-width="1"/>
+    <text x="173" y="211" fill="#E05252">TensorFlow</text>
+
+    <rect x="254" y="196" width="64" height="22" rx="4" fill="#161B22" stroke="#4A90E2" stroke-width="1"/>
+    <text x="265" y="211" fill="#4A90E2">Keras CNN</text>
+
+    <rect x="326" y="196" width="56" height="22" rx="4" fill="#161B22" stroke="#F5A623" stroke-width="1"/>
+    <text x="337" y="211" fill="#F5A623">Python 3</text>
+
+    <rect x="390" y="196" width="76" height="22" rx="4" fill="#161B22" stroke="#4E5568" stroke-width="1"/>
+    <text x="400" y="211" fill="#8B949E">scikit-learn</text>
+
+    <rect x="474" y="196" width="68" height="22" rx="4" fill="#161B22" stroke="#4E5568" stroke-width="1"/>
+    <text x="484" y="211" fill="#8B949E">9 Classes</text>
+  </g>
+
+  <!-- Decorative: small pulse/ECG line bottom right -->
+  <g opacity="0.25" stroke="#E05252" stroke-width="1.5" fill="none">
+    <polyline points="580,220 600,220 610,210 620,230 630,205 640,235 650,220 680,220 700,220"/>
+  </g>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300">
+  <!-- Dark background -->
+  <rect width="820" height="300" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="410" y="34" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="2">PROJECT STATS</text>
+  <line x1="60" y1="46" x2="760" y2="46" stroke="#4E5568" stroke-width="1"/>
+
+  <!-- ── Row 1: 4 cards ──────────────────────────────────────────────────────── -->
+
+  <!-- Card: Source Lines -->
+  <rect x="30" y="62" width="170" height="90" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="115" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#E05252">213</text>
+  <text x="115" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">lines of Python</text>
+  <text x="115" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">main · model · data_preprocessing</text>
+  <text x="115" y="144" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">3 source files</text>
+
+  <!-- Card: Classes -->
+  <rect x="215" y="62" width="170" height="90" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="300" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#4A90E2">9</text>
+  <text x="300" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">target classes</text>
+  <text x="300" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">skin condition categories</text>
+  <text x="300" y="144" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">including melanoma + SCC</text>
+
+  <!-- Card: Input size -->
+  <rect x="400" y="62" width="170" height="90" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="485" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="28" font-weight="700" fill="#F5A623">224²</text>
+  <text x="485" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">input image size (px)</text>
+  <text x="485" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">RGB, 3-channel</text>
+  <text x="485" y="144" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">rescaled to [0, 1]</text>
+
+  <!-- Card: Dependencies -->
+  <rect x="585" y="62" width="205" height="90" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1.5"/>
+  <text x="687" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#8B949E">7</text>
+  <text x="687" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">pip dependencies</text>
+  <text x="687" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">TF · numpy · PIL · matplotlib</text>
+  <text x="687" y="144" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">seaborn · sklearn · pandas</text>
+
+  <!-- ── Row 2: 4 more cards ─────────────────────────────────────────────────── -->
+
+  <!-- Card: Conv Blocks -->
+  <rect x="30" y="168" width="170" height="90" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="115" y="196" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#E05252">3</text>
+  <text x="115" y="216" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">conv blocks</text>
+  <text x="115" y="232" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">filters: 32 → 64 → 128</text>
+  <text x="115" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">VGG-style architecture</text>
+
+  <!-- Card: Batch size -->
+  <rect x="215" y="168" width="170" height="90" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="300" y="196" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#4A90E2">32</text>
+  <text x="300" y="216" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">batch size</text>
+  <text x="300" y="232" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">80% train / 20% val</text>
+  <text x="300" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">seed=42 for reproducibility</text>
+
+  <!-- Card: Max epochs -->
+  <rect x="400" y="168" width="170" height="90" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="485" y="196" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="700" fill="#F5A623">50</text>
+  <text x="485" y="216" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">max epochs</text>
+  <text x="485" y="232" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">EarlyStopping patience=7</text>
+  <text x="485" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">ReduceLR patience=3</text>
+
+  <!-- Card: Dropout -->
+  <rect x="585" y="168" width="205" height="90" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1.5"/>
+  <text x="687" y="196" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="28" font-weight="700" fill="#8B949E">0.25/0.5</text>
+  <text x="687" y="216" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">dropout rates</text>
+  <text x="687" y="232" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">0.25 after each conv block</text>
+  <text x="687" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">0.5 before final dense</text>
+</svg>

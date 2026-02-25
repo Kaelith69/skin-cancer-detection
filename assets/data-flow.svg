@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="440" viewBox="0 0 820 440">
+  <!-- Dark background -->
+  <rect width="820" height="440" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="410" y="34" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="2">DATA FLOW PIPELINE</text>
+  <line x1="60" y1="46" x2="760" y2="46" stroke="#4E5568" stroke-width="1"/>
+
+  <!-- ── STAGE 1: Raw Dataset ─────────────────────────── -->
+  <rect x="30" y="68" width="140" height="70" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="100" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#4A90E2">📁 Raw Dataset</text>
+  <text x="100" y="108" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">9 class folders</text>
+  <text x="100" y="124" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">dermoscopy images</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="170" y1="103" x2="202" y2="103" stroke="#4A90E2" stroke-width="1.5"/>
+  <polygon points="202,99 212,103 202,107" fill="#4A90E2"/>
+
+  <!-- ── STAGE 2: split ─────────────────────────────── -->
+  <rect x="212" y="68" width="140" height="70" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="282" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#4A90E2">🔀 80/20 Split</text>
+  <text x="282" y="108" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">validation_split=0.2</text>
+  <text x="282" y="124" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">seed=42, shuffle=True</text>
+
+  <!-- Arrow 2 → branches down -->
+  <line x1="282" y1="138" x2="282" y2="172" stroke="#4E5568" stroke-width="1.5"/>
+  <!-- Left branch (train) -->
+  <line x1="282" y1="172" x2="160" y2="172" stroke="#4E5568" stroke-width="1.5"/>
+  <line x1="160" y1="172" x2="160" y2="190" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="156,190 160,200 164,190" fill="#4E5568"/>
+  <!-- Right branch (val) -->
+  <line x1="282" y1="172" x2="410" y2="172" stroke="#4E5568" stroke-width="1.5"/>
+  <line x1="410" y1="172" x2="410" y2="190" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="406,190 410,200 414,190" fill="#4E5568"/>
+
+  <!-- Branch labels -->
+  <text x="120" y="168" font-family="'Courier New', Courier, monospace" font-size="9" fill="#E05252">train (80%)</text>
+  <text x="380" y="168" font-family="'Courier New', Courier, monospace" font-size="9" fill="#F5A623">val (20%)</text>
+
+  <!-- ── STAGE 3a: Augmentation ──────────────────────── -->
+  <rect x="80" y="200" width="160" height="80" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="160" y="220" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">⚙ Augmentation</text>
+  <text x="160" y="236" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">h-flip · rotate(20°)</text>
+  <text x="160" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">zoom(0.2) · shear(0.1)</text>
+  <text x="160" y="264" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">shift(0.1) · rescale÷255</text>
+
+  <!-- ── STAGE 3b: Validation rescale ─────────────────── -->
+  <rect x="330" y="200" width="160" height="80" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="410" y="220" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#F5A623">⚙ Rescale Only</text>
+  <text x="410" y="236" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">rescale ÷ 255</text>
+  <text x="410" y="250" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">no augmentation</text>
+  <text x="410" y="264" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">(prevents data leakage)</text>
+
+  <!-- Arrows stage 3 → stage 4 -->
+  <line x1="160" y1="280" x2="160" y2="310" stroke="#E05252" stroke-width="1.5"/>
+  <polygon points="156,310 160,320 164,310" fill="#E05252"/>
+  <line x1="410" y1="280" x2="410" y2="310" stroke="#F5A623" stroke-width="1.5"/>
+  <polygon points="406,310 410,320 414,310" fill="#F5A623"/>
+
+  <!-- ── STAGE 4a: CNN Training ─────────────────────── -->
+  <rect x="80" y="320" width="160" height="70" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="160" y="340" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">🧠 CNN Training</text>
+  <text x="160" y="356" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">model.fit() · ≤50 epochs</text>
+  <text x="160" y="372" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">EarlyStopping (p=7)</text>
+
+  <!-- ── STAGE 4b: Eval ─────────────────────────────── -->
+  <rect x="330" y="320" width="160" height="70" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="410" y="340" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#F5A623">📊 Evaluation</text>
+  <text x="410" y="356" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">model.evaluate()</text>
+  <text x="160" y="372" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E"> </text>
+  <text x="410" y="372" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">loss · accuracy</text>
+
+  <!-- Arrow train → saved model -->
+  <line x1="160" y1="390" x2="160" y2="410" stroke="#4E5568" stroke-width="1.5"/>
+  <line x1="160" y1="410" x2="290" y2="410" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="290,406 300,410 290,414" fill="#4E5568"/>
+  <!-- Arrow eval → report -->
+  <line x1="410" y1="390" x2="410" y2="410" stroke="#4E5568" stroke-width="1.5"/>
+  <line x1="410" y1="410" x2="520" y2="410" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="520,406 530,410 520,414" fill="#4E5568"/>
+
+  <!-- ── Output: Saved model ────────────────────────── -->
+  <rect x="300" y="395" width="180" height="38" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1"/>
+  <text x="390" y="419" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">💾 skin_cancer_model.keras</text>
+
+  <!-- ── Output: Classification report ──────────────── -->
+  <rect x="530" y="395" width="200" height="38" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1"/>
+  <text x="630" y="412" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">📋 classification_report</text>
+  <text x="630" y="426" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">precision · recall · F1 per class</text>
+
+  <!-- ── STAGE 5: Class weights (side input) ─────────── -->
+  <rect x="570" y="68" width="190" height="70" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="665" y="90" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" font-weight="700" fill="#8B949E">⚖ Class Weights</text>
+  <text x="665" y="106" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">compute_class_weight('balanced')</text>
+  <text x="665" y="120" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">injected into model.fit()</text>
+
+  <!-- Arrow class weights → CNN training -->
+  <line x1="665" y1="138" x2="665" y2="355" stroke="#4E5568" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="665" y1="355" x2="242" y2="355" stroke="#4E5568" stroke-width="1" stroke-dasharray="4,2"/>
+  <polygon points="242,351 232,355 242,359" fill="#4E5568"/>
+</svg>

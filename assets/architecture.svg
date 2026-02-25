@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="520" viewBox="0 0 820 520">
+  <!-- Dark background -->
+  <rect width="820" height="520" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="410" y="36" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="2">SYSTEM ARCHITECTURE</text>
+  <line x1="60" y1="48" x2="760" y2="48" stroke="#4E5568" stroke-width="1"/>
+
+  <!-- LAYER LABELS -->
+  <!-- Data Layer label -->
+  <rect x="20" y="70" width="12" height="90" rx="2" fill="#4A90E2" opacity="0.6"/>
+  <text x="17" y="165" font-family="'Courier New', Courier, monospace" font-size="10"
+        fill="#4A90E2" writing-mode="lr" transform="rotate(-90,17,120)">DATA LAYER</text>
+
+  <!-- Processing Layer label -->
+  <rect x="20" y="200" width="12" height="160" rx="2" fill="#E05252" opacity="0.6"/>
+  <text x="17" y="385" font-family="'Courier New', Courier, monospace" font-size="10"
+        fill="#E05252" writing-mode="lr" transform="rotate(-90,17,290)">MODEL LAYER</text>
+
+  <!-- Output Layer label -->
+  <rect x="20" y="400" width="12" height="90" rx="2" fill="#F5A623" opacity="0.6"/>
+  <text x="17" y="495" font-family="'Courier New', Courier, monospace" font-size="10"
+        fill="#F5A623" writing-mode="lr" transform="rotate(-90,17,450)">OUTPUT LAYER</text>
+
+  <!-- ── DATA LAYER ─────────────────────────────────────────────────────────── -->
+  <!-- Dataset directory box -->
+  <rect x="60" y="68" width="170" height="84" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="145" y="92" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="12" font-weight="700" fill="#4A90E2">📁 dataset/</text>
+  <text x="145" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">9 class subdirectories</text>
+  <text x="145" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">JPEG/PNG dermoscopy</text>
+  <text x="145" y="142" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" fill="#8B949E">images on disk</text>
+
+  <!-- Arrow: dataset → train_datagen -->
+  <line x1="230" y1="110" x2="280" y2="110" stroke="#4A90E2" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <polygon points="280,106 290,110 280,114" fill="#4A90E2"/>
+
+  <!-- Train ImageDataGenerator -->
+  <rect x="290" y="68" width="200" height="84" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="390" y="88" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#4A90E2">ImageDataGenerator</text>
+  <text x="390" y="104" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Training (80%): augmentation</text>
+  <text x="390" y="118" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">flip · rotate · zoom · shear</text>
+  <text x="390" y="132" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Validation (20%): rescale only</text>
+  <text x="390" y="146" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">224×224px · batch=32</text>
+
+  <!-- Class Weights -->
+  <rect x="540" y="68" width="220" height="84" rx="6" fill="#161B22" stroke="#4A90E2" stroke-width="1.5"/>
+  <text x="650" y="88" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#4A90E2">compute_class_weight()</text>
+  <text x="650" y="104" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">sklearn balanced weighting</text>
+  <text x="650" y="118" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">counters class imbalance</text>
+  <text x="650" y="132" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">passed as class_weight_dict</text>
+  <text x="650" y="146" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">to model.fit()</text>
+
+  <!-- Arrow: datagen → class weights -->
+  <line x1="490" y1="110" x2="538" y2="110" stroke="#4A90E2" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <polygon points="538,106 548,110 538,114" fill="#4A90E2"/>
+
+  <!-- ── MODEL LAYER ─────────────────────────────────────────────────────────── -->
+  <!-- Arrow: datagen → CNN model -->
+  <line x1="390" y1="152" x2="390" y2="192" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="386,192 390,202 394,192" fill="#4E5568"/>
+
+  <!-- CNN Block 1 -->
+  <rect x="60" y="202" width="220" height="74" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="170" y="222" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">Block 1 — Conv32</text>
+  <text x="170" y="238" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(32) → BN → ReLU</text>
+  <text x="170" y="252" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(32) → BN → ReLU</text>
+  <text x="170" y="266" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">MaxPool(2×2) → Dropout(0.25)</text>
+
+  <!-- CNN Block 2 -->
+  <rect x="300" y="202" width="220" height="74" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="410" y="222" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">Block 2 — Conv64</text>
+  <text x="410" y="238" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(64) → BN → ReLU</text>
+  <text x="410" y="252" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(64) → BN → ReLU</text>
+  <text x="410" y="266" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">MaxPool(2×2) → Dropout(0.25)</text>
+
+  <!-- CNN Block 3 -->
+  <rect x="540" y="202" width="220" height="74" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="650" y="222" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">Block 3 — Conv128</text>
+  <text x="650" y="238" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(128) → BN → ReLU</text>
+  <text x="650" y="252" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Conv2D(128) → BN → ReLU</text>
+  <text x="650" y="266" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">MaxPool(2×2) → Dropout(0.25)</text>
+
+  <!-- Arrows between conv blocks -->
+  <line x1="280" y1="239" x2="298" y2="239" stroke="#E05252" stroke-width="1.5"/>
+  <polygon points="298,235 308,239 298,243" fill="#E05252"/>
+  <line x1="520" y1="239" x2="538" y2="239" stroke="#E05252" stroke-width="1.5"/>
+  <polygon points="538,235 548,239 538,243" fill="#E05252"/>
+
+  <!-- Entry arrow into block 1 -->
+  <line x1="170" y1="192" x2="170" y2="200" stroke="#4E5568" stroke-width="1.5"/>
+  <!-- Horizontal to block 1 entry -->
+  <line x1="170" y1="192" x2="390" y2="192" stroke="#4E5568" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <!-- Classification Head -->
+  <rect x="200" y="310" width="420" height="74" rx="6" fill="#161B22" stroke="#E05252" stroke-width="1.5"/>
+  <text x="410" y="330" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#E05252">Classification Head</text>
+  <text x="410" y="346" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Flatten → Dense(256) → BN → Dropout(0.5)</text>
+  <text x="410" y="360" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">Dense(9, softmax) — Adam optimizer</text>
+  <text x="410" y="374" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">loss: categorical_crossentropy · metric: accuracy</text>
+
+  <!-- Arrows from block3 down to head -->
+  <line x1="650" y1="276" x2="650" y2="295" stroke="#4E5568" stroke-width="1.5"/>
+  <line x1="650" y1="295" x2="410" y2="295" stroke="#4E5568" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="410" y1="295" x2="410" y2="308" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="406,308 410,318 414,308" fill="#4E5568"/>
+
+  <!-- Callbacks box -->
+  <rect x="60" y="310" width="118" height="74" rx="6" fill="#161B22" stroke="#4E5568" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="119" y="330" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="10" font-weight="700" fill="#8B949E">Callbacks</text>
+  <text x="119" y="346" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">EarlyStopping</text>
+  <text x="119" y="360" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">ModelCheckpoint</text>
+  <text x="119" y="374" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#4E5568">ReduceLROnPlateau</text>
+
+  <!-- Callbacks dashed arrow -->
+  <line x1="178" y1="347" x2="198" y2="347" stroke="#4E5568" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- ── OUTPUT LAYER ─────────────────────────────────────────────────────────── -->
+  <!-- Arrow head→output -->
+  <line x1="410" y1="384" x2="410" y2="406" stroke="#4E5568" stroke-width="1.5"/>
+  <polygon points="406,406 410,416 414,406" fill="#4E5568"/>
+
+  <!-- Output box -->
+  <rect x="200" y="416" width="420" height="82" rx="6" fill="#161B22" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="410" y="436" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="11" font-weight="700" fill="#F5A623">Prediction Output</text>
+  <text x="410" y="452" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">9-class softmax probability vector</text>
+
+  <!-- 9 class pills -->
+  <g font-family="'Courier New', Courier, monospace" font-size="8" fill="#F5A623">
+    <text x="218" y="468">AK</text>
+    <text x="244" y="468">BCC</text>
+    <text x="274" y="468">DF</text>
+    <text x="298" y="468">MEL</text>
+    <text x="328" y="468">NEV</text>
+    <text x="356" y="468">PBK</text>
+    <text x="388" y="468">SEK</text>
+    <text x="418" y="468">SCC</text>
+    <text x="448" y="468">VL</text>
+  </g>
+  <text x="410" y="488" text-anchor="middle" font-family="'Courier New', Courier, monospace"
+        font-size="9" fill="#8B949E">+ sklearn classification_report (precision/recall/F1)</text>
+</svg>
